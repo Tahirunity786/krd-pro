@@ -22,8 +22,8 @@ export const Navbar = () => {
     `;
 
     return (
-<header className="bg-white/80 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-50 font-sans">
-            <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <header className="bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-[0_0_1px_0_rgba(0,0,0,0.31),0_2px_2px_-2px_rgba(0,0,0,0.25)] sticky top-0 z-50 font-sans">
+            <div className="w-full mx-auto px-4 sm:px-6 lg:px-6 h-16 flex items-center justify-between">
 
                 {/* Logo Section */}
                 <div className="flex items-center gap-2">
@@ -39,8 +39,8 @@ export const Navbar = () => {
                 </div>
 
                 {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center h-full gap-2">
-                    <nav className="flex items-center gap-3 h-full">
+                <div className="hidden lg:flex items-center h-full ">
+                    <nav className="flex items-center gap-4 h-full">
                         <Link href="/" className={linkClasses('/')}>
                             Home
                         </Link>
@@ -69,7 +69,7 @@ export const Navbar = () => {
                     </nav>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center gap-4 pl-2">
+                    <div className="flex items-center gap-5 pl-2">
                         <Link
                             href="/"
                             className="bg-[#c5a059] hover:bg-[#b08d48] text-white px-2 py-1 rounded shadow-sm font-medium text-sm transition-colors"

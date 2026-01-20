@@ -61,7 +61,7 @@ const DetailItem = ({ label, value }) => (
 
 export default function VisaPermitPage() {
     return (
-        <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
+        <div className="min-h-screen bg-white font-sans text-gray-900">
             <Head>
                 <title>e-Visa Permit | {visaData.permitNumber}</title>
             </Head>
@@ -71,7 +71,7 @@ export default function VisaPermitPage() {
 
             {/* --- Main Content --- */}
             <main className="py-10 px-4 sm:px-6">
-                <div className="max-w-7xl mx-auto bg-white rounded-lg  border border-gray-300 overflow-hidden">
+                <div className="max-w-7xl mx-auto bg-white rounded-lg  border border-gray-200 overflow-hidden">
 
                     {/* Top Section: Logo & Status */}
                     <div className="flex flex-col items-center pt-10 pb-6 text-center">
