@@ -92,7 +92,7 @@ export default function HomePage() {
         {/* Dotted Map Pattern Background */}
         <div className="fixed inset-0 z-0">
           <div
-            className="w-full h-screen xl:h-[50vh] bg-[url('/images/banner.webp')] bg-cover bg-center bg-no-repeat background-fixed background-top"
+            className="w-full h-screen lg:h-screen xl:h-[50vh] bg-[url('/images/banner.webp')] bg-cover bg-center bg-no-repeat background-fixed background-top"
           />          {/* Subtle vignette to focus center */}
           <div className="absolute inset-0 " />
         </div>
