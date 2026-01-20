@@ -2,15 +2,15 @@ import React from 'react'
 
 export const Footer = () => {
     return (
-        <footer className="bg-gray-100 border-t border-gray-200 mt-12 py-12">
+        <footer className="bg-gray-100 border-t border-gray-200 py-12">
             <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
 
                 {/* Footer Logo Col */}
                 <div>
                     <div className="w-16 h-16 mb-4 relative opacity-80">
-                        <img src="/images/krg-logo.png" alt="Logo" className="object-contain" />
+                        <img src="/images/krg_logo.webp" alt="Logo" className="object-contain" />
                     </div>
-                    <h2 className="Electo-h2">E-VISA <span className="text-gray-600 font-normal">Portal</span></h2>
+                        <img src="/images/portal-en.svg" alt="Logo" className="object-contain" />
                     <p className="text-sm text-gray-500 mt-2 mb-4 max-w-xs">
                         The official government portal to apply for e-Visa
                     </p>
