@@ -24,7 +24,7 @@ const TAB_DATA = [
   {
     id: 'e-visa-validity',
     label: 'e-Visa Validity',
-    title: 'Validity & Duration',
+    title: 'e-Visa Validity',
     image: '/images/evisa-validity.webp',
     content: (
       <p>
@@ -53,14 +53,14 @@ const TAB_DATA = [
 export default function InfoTabsSection() {
   const [activeTab, setActiveTab] = useState(TAB_DATA[0].id);
 
-  const activeContent = useMemo(() => 
-    TAB_DATA.find((t) => t.id === activeTab) || TAB_DATA[0], 
-  [activeTab]);
+  const activeContent = useMemo(() =>
+    TAB_DATA.find((t) => t.id === activeTab) || TAB_DATA[0],
+    [activeTab]);
 
   return (
     <section className="relative z-20 px-4 pt-16 -mt-12 pb-30 bg-white ">
-      <div className="max-w-5xl mx-auto"> {/* Increased max-w slightly to accommodate layout */}
-        
+      <div className="max-w-5xl xl:max-w-7xl mx-auto"> {/* Increased max-w slightly to accommodate layout */}
+
         {/* Tabs Header */}
         <div className="flex justify-center mb-16 overflow-x-auto scrollbar-hide">
           <div className="flex space-x-8">
@@ -73,7 +73,7 @@ export default function InfoTabsSection() {
                   className={cn(
                     "pb-1 text-[20px] cursor-pointer transition-all duration-300 border-b-2 whitespace-nowrap px-4",
                     isActive
-                      ? "border-[#be9d4b] text-[#be9d4b]" 
+                      ? "border-[#be9d4b] text-[#be9d4b]"
                       : "border-transparent text-[#b0bec5] "
                   )}
                   type="button"
@@ -88,8 +88,8 @@ export default function InfoTabsSection() {
         </div>
 
         {/* Tab Content Display */}
-        <div 
-          key={activeTab} 
+        <div
+          key={activeTab}
           className="flex flex-col md:flex-row items-center  gap-12 md:gap-16 animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-forwards"
         >
           {/* Left Image */}
@@ -107,7 +107,7 @@ export default function InfoTabsSection() {
                 alt={activeContent.title}
                 className="relative z-10 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onError={(e) => {
-                   e.currentTarget.style.display = 'none'; 
+                  e.currentTarget.style.display = 'none';
                 }}
               />
             </div>
@@ -115,7 +115,7 @@ export default function InfoTabsSection() {
 
           {/* Right Text */}
           <div className="w-full md:w-1/2 space-y-6 justify-center pt-4">
-            <h2 className="Electo-h2 text-gray-800" style={{fontWeight:400}}>
+            <h2 className="Electo-h2 text-gray-800" style={{ fontWeight: 400 }}>
               {activeContent.title}
             </h2>
             <div className="text-[#546e7a] MuiTypography-subtitle1">

@@ -45,7 +45,7 @@ const Button = ({ variant = 'primary', children, className, ...props }) => {
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center px-5 pb-1 pt-2 text-[18px] font-semibold rounded-[4px] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2",
+        "inline-flex items-center justify-center px-6 cursor-pointer pb-1 pt-[5px] text-[18px] font-semibold rounded-[4px] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2",
         variants[variant],
         className
       )}
@@ -88,19 +88,20 @@ export default function HomePage() {
     <main className="min-h-screen bg-white font-sans text-gray-900">
 
       {/* 1. Hero Section */}
-      <section className="relative w-full h-screen xl:h-[50vh] pt-20 pb-24 overflow-hidden">
+      <section className="relative w-full h-screen xl:h-[50vh] pt-22 pb-26 overflow-hidden">
         {/* Dotted Map Pattern Background */}
         <div className="fixed inset-0 z-0">
           <div
-            className="w-full h-screen lg:h-screen xl:h-[50vh] bg-[url('/images/banner.webp')] bg-cover bg-center bg-no-repeat background-fixed background-top"
-          />          {/* Subtle vignette to focus center */}
+            className="w-full bg-[url('/images/banner.webp')] bg-cover bg-no-repeat bg-top bg-scroll h-[510px]"
+          />
+          {/* Subtle vignette to focus center */}
           <div className="absolute inset-0 " />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
           {/* Logo Emblem */}
-          <div className="mb-3 relative">
-            <div className="w-[140px] h-[120px] mb-4 relative">
+          <div className="mb-4 relative">
+            <div className="w-[140px] h-[120px]  relative">
               <img
                 src="/images/krg_logo.webp"
                 alt="KRG Eagle Logo"
@@ -111,7 +112,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <h1 className="Electo-h2 mb-2 text-gray-900">
+          <h1 className="Electo-h2 mb-4 text-gray-900">
             e-Visa Portal
           </h1>
           <p className="Electo-h3 text-gray-900 mb-4">
@@ -130,7 +131,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. Features Grid (Floating over section break) */}
-      <section className="relative z-20 px-4 pt-16 -mt-12 pb-20 bg-white">
+      <section className="relative z-20 px-4 pt-8 mt-10 pb-15 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
           <FeatureCard icon={IconBook} title="Who Needs Visa">
