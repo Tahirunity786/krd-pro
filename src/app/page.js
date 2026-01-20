@@ -57,14 +57,17 @@ const Button = ({ variant = 'primary', children, className, ...props }) => {
 };
 
 const FeatureCard = ({ icon: Icon, title, children }) => (
-  <div className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-300 flex items-center  gap-4 h-full">
-    <div className="shrink-0 mt-1 mr-1 text-[#1F2937]">
-      <Icon className="w-6 h-6" />
-    </div>
-    <div className="flex flex-col">
-      <h3 className="Electo-h5 text-gray-800 mb-2">{title}</h3>
-      <div className="text-[#546e7a] MuiTypography-body2">
-        {children}
+  <div className="gap-4">
+
+    <div className='bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-300 flex items-center'>
+      <div className="shrink-0 mt-1 mr-1 text-[#1F2937]">
+        <Icon className="w-6 h-6" />
+      </div>
+      <div className="flex flex-col">
+        <h3 className="Electo-h5 text-gray-800 mb-2">{title}</h3>
+        <div className="text-[#546e7a] MuiTypography-body2">
+          {children}
+        </div>
       </div>
     </div>
   </div>
@@ -75,7 +78,6 @@ const FeatureCard = ({ icon: Icon, title, children }) => (
 // --- Main Page Component ---
 
 export default function HomePage() {
-  const [activeTab, setActiveTab] = useState('expiration');
   const [openAccordion, setOpenAccordion] = useState(null);
 
   const toggleAccordion = (idx) => {
@@ -86,13 +88,13 @@ export default function HomePage() {
     <main className="min-h-screen bg-white font-sans text-gray-900">
 
       {/* 1. Hero Section */}
-      <section className="relative w-full h-screen pt-16 pb-24 overflow-hidden">
+      <section className="relative w-full h-screen xl:h-[50vh] pt-20 pb-24 overflow-hidden">
         {/* Dotted Map Pattern Background */}
         <div className="fixed inset-0 z-0">
           <div
-            className="w-full h-screen bg-[url('/images/banner.webp')] bg-cover bg-center bg-no-repeat "
+            className="w-full h-screen xl:h-[50vh] bg-[url('/images/banner.webp')] bg-cover bg-center bg-no-repeat background-fixed background-top"
           />          {/* Subtle vignette to focus center */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/80" />
+          <div className="absolute inset-0 " />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
@@ -129,7 +131,7 @@ export default function HomePage() {
 
       {/* 2. Features Grid (Floating over section break) */}
       <section className="relative z-20 px-4 pt-16 -mt-12 pb-20 bg-white">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
           <FeatureCard icon={IconBook} title="Who Needs Visa">
             Citizens of <span className="text-[#C8A45D] font-medium">Country List A</span> can obtain an e-Visa either through the E-VISA portal or upon arrival at any entry point.
@@ -178,17 +180,33 @@ export default function HomePage() {
       </section>
       {/* 5. FAQ Section */}
       <section className="relative z-20 px-4 pt-16 -mt-12 pb-30 bg-white">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl xl:max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
             Frequently Asked Questions
           </h2>
 
           <div className="space-y-3">
             {[
-              "If my visa application has been refused, will I be refunded?",
-              "How long can I stay in the Region?",
-              "What visa types are available to come to the Region?",
-              "How long will my visa be valid for?"
+              {
+                key: 1,
+                label: 'If my visa application has been refused, will I be refunded?',
+                description: "The fee that you paid is application fee and is not refundable. Everyone who applies for a visa to enter the Kurdistan Region of Iraq is required to pay this fee, which covers the cost of processing the application. Since your application is processed, the application fee cannot be refunded whether the application is accepted or refused."
+              },
+              {
+                key: 2,
+                label: 'How long can I stay in the Region?',
+                description: "All visa types have a staying period of 30 days. This means that you can stay for 30 days from the day you enter the Kurdistan Region of Iraq. For example: if your visa is issued on 1st March 2021 and will expire on 31st June 2021 at 11:59 PM, and you enter the Kurdistan Region of Iraq on 30th June 2021, therefore, you can stay in the Kurdistan Region of Iraq until 30th July 2021."
+              },
+              {
+                key: 3,
+                label: 'What visa types are available to come to the Kurdistan Region of Iraq?',
+                description: "The available visa types vary depending on your Passport/Travel Document country. You can see the available visas for your country using the Eligibility Checker."
+              },
+              {
+                key: 4,
+                label: 'How long will my visa be valid for?',
+                description: "All types of visa are valid for 90 days from the date of issuance. This means that you can travel to the Kurdistan Region of Iraq on any day within these 90 days. For example: your visa is issued on 1st March 2021 and will expire on 31st June 2021 at 11:59 PM. Therefore, you can travel to the Kurdistan Region of Iraq any time before 31st June 2021 at 11:59 PM and can stay as long as your permitted visa stay period."
+              }
             ].map((q, idx) => (
               <AccordionItem
                 key={idx}
@@ -200,16 +218,13 @@ export default function HomePage() {
           </div>
 
           <div className="mt-12 flex justify-center">
-            <button className="border border-gray-300 text-gray-600 px-8 py-3 rounded hover:bg-gray-50 font-medium transition-colors">
+            <button className="border border-gray-300 cursor-pointer text-gray-600 px-4 py-[6px] rounded-md hover:bg-gray-50 font-medium text-md transition-colors">
               Have More Questions?
             </button>
           </div>
         </div>
       </section>
 
-      {/* (Bottom Links Area / "Pre-Footer" shown in image) */}
-      {/* Excluded actual black/dark footer as per instructions, but keeping content flow */}
-      <div className="h-12"></div>
     </main>
   );
 }
