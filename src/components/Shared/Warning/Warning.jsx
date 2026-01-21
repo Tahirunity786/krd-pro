@@ -2,7 +2,7 @@ import React from 'react'
 
 const Warning = () => {
     return (
-        <div className="px-4 lg:px-8 mb-8">
+        <div className="px-4 lg:px-8 mb-4">
             <div className="bg-orange-50 border border-orange-100 rounded-md p-1 flex items-start gap-1 lg:max-w-5xl mx-auto">
 
                 <div className="MuiAlert-root MuiAlert-standardWarning">
@@ -13,7 +13,7 @@ const Warning = () => {
 
                     <div className="MuiAlert-message">
                         <span className="font-semibold text-[1rem] block mb-1">Warning</span>
-                        <p className="text-[##623f04] leading-relaxed">
+                        <p className="text-[##623f04] ">
                             This is a machine-issued visa permit. In order to check the validity of the visa permit,
                             please check the followings against the presented travel document:
                             <br />
