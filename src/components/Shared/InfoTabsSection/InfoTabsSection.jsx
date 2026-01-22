@@ -59,26 +59,42 @@ export default function InfoTabsSection() {
 
   return (
     <section className="relative z-20 px-4 pt-16 -mt-12 pb-30 bg-white ">
-      <div className="max-w-5xl xl:max-w-7xl mx-auto"> {/* Increased max-w slightly to accommodate layout */}
+      <div className="max-w-5xl 2xl:max-w-7xl mx-auto"> {/* Increased max-w slightly to accommodate layout */}
 
         {/* Tabs Header */}
-        <div className="flex justify-center mb-16 overflow-x-auto scrollbar-hide">
-          <div className="flex space-x-8">
+        <div className="flex justify-center mb-16">
+          <div className="flex flex-col md:flex-row md:items-center md:space-x-8">
             {TAB_DATA.map((tab) => {
               const isActive = activeTab === tab.id;
+
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={cn(
-                    "pb-1 text-[20px] cursor-pointer transition-all duration-300 border-b-2 whitespace-nowrap px-4",
-                    isActive
-                      ? "border-[#be9d4b] text-[#be9d4b]"
-                      : "border-transparent text-[#b0bec5] "
-                  )}
                   type="button"
                   role="tab"
                   aria-selected={isActive}
+                  className={cn(
+                    `
+  relative
+  cursor-pointer
+  px-4 py-3
+  text-[20px]
+  whitespace-nowrap
+  transition-all duration-300
+  text-center
+  `,
+                    // MOBILE (sm)
+                    isActive
+                      ? "text-[#be9d4b] border-r-4 border-[#be9d4b] md:border-r-0"
+                      : "text-[#b0bec5] border-r-4 border-transparent md:border-r-0",
+
+                    // DESKTOP (md+)
+                    isActive
+                      ? "md:border-b-2 md:border-[#be9d4b]"
+                      : "md:border-b-2 md:border-transparent"
+                  )}
+
                 >
                   {tab.label}
                 </button>
@@ -86,6 +102,7 @@ export default function InfoTabsSection() {
             })}
           </div>
         </div>
+
 
         {/* Tab Content Display */}
         <div

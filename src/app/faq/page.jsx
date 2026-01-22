@@ -87,8 +87,7 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => (
 
 // --- Main Page Component ---
 export default function FaqPage() {
-  const [openIndex, setOpenIndex] = useState(0); // First item open by default
-
+  const [openIndex, setOpenIndex] = useState(-1);
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };

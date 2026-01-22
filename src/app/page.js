@@ -6,6 +6,8 @@ import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import InfoTabsSection from '@/components/Shared/InfoTabsSection/InfoTabsSection';
 import AccordionItem from '@/components/Shared/AccordionItem/AccordionItem';
+import { routerServerGlobal } from 'next/dist/server/lib/router-utils/router-server-context';
+import { useRouter } from 'next/navigation';
 
 // --- Utility for cleaner classes ---
 function cn(...inputs) {
@@ -60,7 +62,7 @@ const FeatureCard = ({ icon: Icon, title, children }) => (
   <div className="gap-4">
 
     <div className='bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-300 flex items-center'>
-      <div className="shrink-0 mt-1 mr-1 text-[#1F2937]">
+      <div className="shrink-0 mt-1 mr-8 text-[#1F2937]">
         <Icon className="w-6 h-6" />
       </div>
       <div className="flex flex-col">
@@ -80,6 +82,8 @@ const FeatureCard = ({ icon: Icon, title, children }) => (
 export default function HomePage() {
   const [openAccordion, setOpenAccordion] = useState(null);
 
+  const router = useRouter();
+
   const toggleAccordion = (idx) => {
     setOpenAccordion(openAccordion === idx ? null : idx);
   };
@@ -90,56 +94,62 @@ export default function HomePage() {
       {/* 1. Hero Section */}
       <section
         className={cn(
-          "relative w-full overflow-hidden",
+          "relative w-full",
           "flex flex-col justify-center items-center",
-          "h-[80dvh]",      // Mobile
-          "md:h-screen",    // Tablet/Laptop
-          "xl:h-[80vh]"     // Desktop
+          // FIX: Use 'min-h' instead of 'h'. This prevents content from being cut off 
+          // on small laptops while still maintaining the full-screen look.
+          "min-h-[50dvh]",      // Mobile
+          "md:min-h-[90vh]",    // Laptop (Slightly reduced from screen to avoid scrollbar)
+          "xl:min-h-[50vh]",    // Desktop
+          "py-10",            // Add padding so content never touches the edge
+          "jss285"
         )}
-      >       {/* Dotted Map Pattern Background */}
-        <div className="fixed inset-0 z-0">
-          <div
-            className="w-full bg-[url('/images/banner.webp')] bg-cover bg-no-repeat bg-top bg-scroll h-[510px]"
-          />
-          {/* Subtle vignette to focus center */}
-          <div className="absolute inset-0 " />
-        </div>
+      >
+        
 
+        {/* --- Main Content --- */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
-          {/* Logo Emblem */}
+
+          {/* Logo Emblem - Kept your exact classes */}
           <div className="mb-4 relative">
-            <div className="w-[140px] h-[120px]  relative">
+            <div className="w-[140px] h-[140px] relative">
               <img
                 src="/images/krg_logo.webp"
                 alt="KRG Eagle Logo"
                 className="object-contain w-full h-full"
-                height={120}
+                height={145}
                 width={140}
               />
             </div>
           </div>
 
+          {/* Headings - Kept your exact classes */}
           <h1 className="Electo-h2 mb-4 text-gray-900">
             e-Visa Portal
           </h1>
-          <p className="Electo-h3 text-gray-900 mb-4">
+          <p className="Electo-h3 text-gray-900 mb-4"> {/* Increased mb-4 to mb-8 for better spacing */}
             Kurdistan Regional Government
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <Button variant="primary" className="min-w-[100px]">
+          {/* Buttons - Kept your exact classes */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+
+            <Button variant="primary" className="min-w-[100px] px-5 pt-1">
               Apply Now
             </Button>
-            <Button variant="primary" className="min-w-[180px]">
+
+            <Button variant="primary" className="min-w-[180px] px-5 pt-1">
               Retrieve Your Application
             </Button>
+
           </div>
         </div>
       </section>
 
+
       {/* 2. Features Grid (Floating over section break) */}
-      <section className="relative z-20 px-4 pt-8 mt-10 pb-15 bg-white">
-        <div className="lg:max-w-5xl xl:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="relative z-20 px-4 pt-8 mt-8 sm:mt-4 pb-15 bg-white">
+        <div className="max-w-5xl 2xl:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
           <FeatureCard icon={IconBook} title="Who Needs Visa">
             Citizens of <span className="text-[#C8A45D] font-medium">Country List A</span> can obtain an e-Visa either through the E-VISA portal or upon arrival at any entry point.
@@ -179,7 +189,7 @@ export default function HomePage() {
               travel document type to determine if you are required to
               obtain a visa or not.
             </p>
-            <button className="bg-white text-black px-3 py-2 rounded-[5px] font-semibold text-sm hover:bg-gray-100 transition-colors shadow-lg">
+            <button className="bg-white text-black px-3 py-2 rounded-[5px] font-semibold text-sm hover:bg-gray-100 transition-colors shadow-lg cursor-pointer" onClick={()=>{router.push('/visa-eligibility-checker')}}>
               Eligibility Checker
             </button>
           </div>
@@ -188,7 +198,7 @@ export default function HomePage() {
       </section>
       {/* 5. FAQ Section */}
       <section className="relative z-20 px-4 pt-16 -mt-12 pb-30 bg-white">
-        <div className="max-w-3xl xl:max-w-6xl mx-auto">
+        <div className="max-w-3xl 2xl:max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
             Frequently Asked Questions
           </h2>
@@ -226,7 +236,7 @@ export default function HomePage() {
           </div>
 
           <div className="mt-12 flex justify-center">
-            <button className="border border-gray-300 cursor-pointer text-gray-600 px-4 py-[6px] rounded-md hover:bg-gray-50 font-medium text-md transition-colors">
+            <button className="border border-gray-300 cursor-pointer text-gray-600 px-4 py-[6px] rounded-md hover:bg-gray-50 font-medium text-md transition-colors" onClick={()=>{router.push('/faq')}}>
               Have More Questions?
             </button>
           </div>

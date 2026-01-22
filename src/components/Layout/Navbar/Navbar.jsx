@@ -63,7 +63,7 @@ export const Navbar = () => {
                             FAQ
                         </Link>
 
-                        <Link href="/retrieve" className={linkClasses('/retrieve')}>
+                        <Link href="/" className={linkClasses('/retrieve')}>
                             Retrieve Your Application
                         </Link>
                     </nav>
