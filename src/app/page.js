@@ -139,7 +139,7 @@ export default function HomePage() {
 
       {/* 2. Features Grid (Floating over section break) */}
       <section className="relative z-20 px-4 pt-8 mt-10 pb-15 bg-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="lg:max-w-5xl xl:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
           <FeatureCard icon={IconBook} title="Who Needs Visa">
             Citizens of <span className="text-[#C8A45D] font-medium">Country List A</span> can obtain an e-Visa either through the E-VISA portal or upon arrival at any entry point.
