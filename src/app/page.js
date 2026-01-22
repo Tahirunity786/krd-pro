@@ -88,8 +88,15 @@ export default function HomePage() {
     <main className="min-h-screen bg-white font-sans text-gray-900">
 
       {/* 1. Hero Section */}
-      <section className="relative w-full h-screen xl:h-[50vh] pt-22 pb-26 overflow-hidden">
-        {/* Dotted Map Pattern Background */}
+      <section
+        className={cn(
+          "relative w-full overflow-hidden",
+          "flex flex-col justify-center items-center",
+          "h-[80dvh]",      // Mobile
+          "md:h-screen",    // Tablet/Laptop
+          "xl:h-[80vh]"     // Desktop
+        )}
+      >       {/* Dotted Map Pattern Background */}
         <div className="fixed inset-0 z-0">
           <div
             className="w-full bg-[url('/images/banner.webp')] bg-cover bg-no-repeat bg-top bg-scroll h-[510px]"
