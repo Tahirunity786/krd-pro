@@ -172,3 +172,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.jss113 {
+    height: 450px;
+    background-image: url('/images/banner.webp');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}

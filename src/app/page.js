@@ -96,6 +96,7 @@ export default function HomePage() {
         className={cn(
           "relative w-full",
           "flex flex-col justify-center items-center",
+          "jss113",
           // FIX: Use 'min-h' instead of 'h'. This prevents content from being cut off 
           // on small laptops while still maintaining the full-screen look.
           "min-h-[50dvh]",      // Mobile
@@ -117,7 +118,7 @@ export default function HomePage() {
                 src="/images/krg_logo.webp"
                 alt="KRG Eagle Logo"
                 className="object-contain w-full h-full"
-                height={145}
+                height={138}
                 width={140}
               />
             </div>
