@@ -221,41 +221,53 @@ export default function Application() {
 
                         {/* Row 4: Guarantor & Photos */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
-                            <div>
-                                <SectionTitle title="Guarantor Details" />
-                                <div className="grid grid-cols-2 gap-4">
-                                    <DetailItem label="Guarantor Reference Number" value={visaInfo.guarantorRef} />
-                                </div>
+  
+  {/* LEFT COLUMN — Passport */}
+  <div className="order-2 lg:order-1">
+    <SectionTitle title="Guarantor Details" />
+    <div className="grid grid-cols-2 gap-4">
+      <DetailItem
+        label="Guarantor Reference Number"
+        value={visaInfo.guarantorRef}
+      />
+    </div>
 
-                                <div className="mt-8">
-                                    <SectionTitle title="Passport/Travel Document" />
-                                    <div className="w-32 h-40 bg-gray-100 border border-gray-200 rounded-sm relative overflow-hidden">
-                                        {visaInfo.passportUrl && (
-                                            <img
-                                                src={visaInfo.passportUrl}
-                                                alt="Passport Scan"
-                                                className="object-cover w-full h-full opacity-80"
-                                            />
-                                        )}
-                                        <span className="absolute bottom-0 left-0 bg-white/90 text-[10px] w-full text-center py-1">Passport Scan</span>
-                                    </div>
-                                </div>
-                            </div>
+    <div className="mt-8">
+      <SectionTitle title="Passport/Travel Document" />
+      <div className="w-32 h-40 bg-gray-100 border border-gray-200 rounded-sm relative overflow-hidden">
+        {visaInfo.passportUrl && (
+          <img
+            src={visaInfo.passportUrl}
+            alt="Passport Scan"
+            className="object-cover w-full h-full opacity-80"
+          />
+        )}
+        <span className="absolute bottom-0 left-0 bg-white/90 text-[10px] w-full text-center py-1">
+          Passport Scan
+        </span>
+      </div>
+    </div>
+  </div>
 
-                            <div>
-                                <SectionTitle title="Photo" />
-                                <div className="w-32 h-40 bg-gray-100 border border-gray-200 rounded-sm relative overflow-hidden">
-                                    {visaInfo.photoUrl && (
-                                        <img
-                                            src={visaInfo.photoUrl}
-                                            alt="User Photo"
-                                            className="object-cover w-full h-full"
-                                        />
-                                    )}
-                                    <span className="absolute bottom-0 left-0 bg-white/90 text-[10px] w-full text-center py-1">User Photo</span>
-                                </div>
-                            </div>
-                        </div>
+  {/* RIGHT COLUMN — Photo */}
+  <div className="order-1 lg:order-2">
+    <SectionTitle title="Photo" />
+    <div className="w-32 h-40 bg-gray-100 border border-gray-200 rounded-sm relative overflow-hidden">
+      {visaInfo.photoUrl && (
+        <img
+          src={visaInfo.photoUrl}
+          alt="User Photo"
+          className="object-cover w-full h-full"
+        />
+      )}
+      <span className="absolute bottom-0 left-0 bg-white/90 text-[10px] w-full text-center py-1">
+        User Photo
+      </span>
+    </div>
+  </div>
+
+</div>
+
 
                     </div>
                 </div>
