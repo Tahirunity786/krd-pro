@@ -71,11 +71,11 @@ export default function Application() {
                 stayCity: apiData.staying_city,
                 guarantorRef: apiData.guarantor_reference_number,
                 // Append Server URL if the API returns a relative path (starts with /media)
-                photoUrl: apiData.photo?.startsWith('http') 
-                    ? apiData.photo 
+                photoUrl: apiData.photo?.startsWith('http')
+                    ? apiData.photo
                     : `${process.env.NEXT_PUBLIC_MEDIA_SERVER_URL}${apiData.photo}`,
-                passportUrl: apiData.passport_scan?.startsWith('http') 
-                    ? apiData.passport_scan 
+                passportUrl: apiData.passport_scan?.startsWith('http')
+                    ? apiData.passport_scan
                     : `${process.env.NEXT_PUBLIC_MEDIA_SERVER_URL}${apiData.passport_scan}`
             };
 
@@ -94,14 +94,20 @@ export default function Application() {
         }
     }, [slug]);
 
+    const getImageName = (url) => {
+        if (!url) return "";
+        return url.split("/").pop().split("?")[0];
+    };
+
+
     if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
     if (error || !visaInfo) return <div className="min-h-screen flex items-center justify-center text-red-600">Error loading visa details.</div>;
 
     // Helper to determine status badge color
     const isExpired = visaInfo.status === 'EXPIRED';
-    const statusStyles = isExpired 
-        ? "bg-red-100 text-red-500" 
-        : "bg-green-100 text-green-600"; 
+    const statusStyles = isExpired
+        ? "bg-red-100 text-red-500"
+        : "bg-green-100 text-green-600";
 
     return (
         <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -222,52 +228,54 @@ export default function Application() {
                         {/* Row 4: Guarantor & Photos */}
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
 
-  {/* GUARANTOR DETAILS */}
-  <div className="order-1 lg:order-1">
-    <SectionTitle title="Guarantor Details" />
-    <div className="grid grid-cols-2 gap-4">
-      <DetailItem
-        label="Guarantor Reference Number"
-        value={visaInfo.guarantorRef}
-      />
-    </div>
-  </div>
+                            {/* GUARANTOR DETAILS */}
+                            <div className="order-1 lg:order-1">
+                                <SectionTitle title="Guarantor Details" />
+                                <div className="grid grid-cols-2 gap-4">
+                                    <DetailItem
+                                        label="Guarantor Reference Number"
+                                        value={visaInfo.guarantorRef}
+                                    />
+                                </div>
+                            </div>
 
-  {/* PHOTO */}
-  <div className="order-2 lg:order-2">
-    <SectionTitle title="Photo" />
-    <div className="w-32 h-40 bg-gray-100 border border-gray-200 rounded-sm relative overflow-hidden">
-      {visaInfo.photoUrl && (
-        <img
-          src={visaInfo.photoUrl}
-          alt="User Photo"
-          className="object-cover w-full h-full"
-        />
-      )}
-      <span className="absolute bottom-0 left-0 bg-white/90 text-[10px] w-full text-center py-1">
-        User Photo
-      </span>
-    </div>
-  </div>
+                            {/* PHOTO */}
+                            <div className="order-2 lg:order-2">
+                                <SectionTitle title="Photo" />
+                                <div className="w-32 h-40 bg-gray-100 border border-gray-200 rounded-sm relative overflow-hidden">
+                                    {visaInfo.photoUrl && (
+                                        <img
+                                            src={visaInfo.photoUrl}
+                                            alt="User Photo"
+                                            className="object-cover w-full h-full"
+                                        />
+                                    )}
+                                    <span className="absolute bottom-0 left-0 bg-white/90 text-[10px] w-full text-center py-1 truncate px-1">
+                                        {getImageName(visaInfo.photoUrl) || "User Photo"}
+                                    </span>
 
-  {/* PASSPORT */}
-  <div className="order-3 lg:order-3 lg:col-start-1">
-    <SectionTitle title="Passport/Travel Document" />
-    <div className="w-32 h-40 bg-gray-100 border border-gray-200 rounded-sm relative overflow-hidden">
-      {visaInfo.passportUrl && (
-        <img
-          src={visaInfo.passportUrl}
-          alt="Passport Scan"
-          className="object-cover w-full h-full opacity-80"
-        />
-      )}
-      <span className="absolute bottom-0 left-0 bg-white/90 text-[10px] w-full text-center py-1">
-        Passport Scan
-      </span>
-    </div>
-  </div>
+                                </div>
+                            </div>
 
-</div>
+                            {/* PASSPORT */}
+                            <div className="order-3 lg:order-3 lg:col-start-1">
+                                <SectionTitle title="Passport/Travel Document" />
+                                <div className="w-32 h-40 bg-gray-100 border border-gray-200 rounded-sm relative overflow-hidden">
+                                    {visaInfo.passportUrl && (
+                                        <img
+                                            src={visaInfo.passportUrl}
+                                            alt="Passport Scan"
+                                            className="object-cover w-full h-full opacity-80"
+                                        />
+                                    )}
+                                    <span className="absolute bottom-0 left-0 bg-white/90 text-[10px] w-full text-center py-1 truncate px-1">
+                                        {getImageName(visaInfo.passportUrl) || "Passport Scan"}
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
 
 
                     </div>
