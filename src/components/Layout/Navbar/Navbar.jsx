@@ -4,10 +4,12 @@ import { Globe, Menu, ChevronDown } from 'lucide-react'
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
+import MobileMenu from '../MobileMenu/MobileMenu';
 
 export const Navbar = () => {
     const pathname = usePathname();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     // Helper to check active state
     const isActive = (path) => pathname === path;
@@ -22,6 +24,7 @@ export const Navbar = () => {
     `;
 
     return (
+        <>
         <header className="bg-white/90 backdrop-blur-sm border-b border-gray-100 shadow-[0_0_1px_0_rgba(0,0,0,0.31),0_2px_2px_-2px_rgba(0,0,0,0.25)] sticky top-0 z-50 font-sans">
             <div className="w-full mx-auto px-4 sm:px-6 lg:px-6 h-16 flex items-center justify-between">
 
@@ -84,9 +87,16 @@ export const Navbar = () => {
                 {/* Mobile Menu Toggle */}
                 <div className="lg:hidden flex items-center gap-4">
                     <Globe className="w-5 h-5 text-slate-600" />
-                    <Menu className="w-6 h-6 text-slate-600 cursor-pointer" />
+                    <Menu className="w-5 h-5 text-slate-600 cursor-pointer" onClick={() => setIsMobileMenuOpen(true)} />
                 </div>
             </div>
+           
         </header>
+        
+         <MobileMenu
+                isOpen={isMobileMenuOpen}
+                onClose={() => setIsMobileMenuOpen(false)}
+            />
+        </>
     )
 }
