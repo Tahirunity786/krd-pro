@@ -34,8 +34,7 @@ export default function Application() {
     const fetchVisaData = async (slug) => {
         try {
             setLoading(true);
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/visa/status/${slug}/`);
-            const apiData = response.data.data;
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/visa/status/${encodeURIComponent(slug)}/`); const apiData = response.data.data;
 
             // Map API (snake_case) to UI (camelCase)
             const mappedData = {
