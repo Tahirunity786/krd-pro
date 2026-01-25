@@ -1,11 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../../app/globals.css";
 import { Navbar } from "@/components/Layout/Navbar/Navbar";
 import { Footer } from "@/components/Layout/Footer/Footer";
 
 export const metadata = {
-  title: "e-Visa Portal",
-  
+  title: "Food Recipe Blog | P2cart",
+
 };
 
 export default function RootLayout({ children }) {
