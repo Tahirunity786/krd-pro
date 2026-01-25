@@ -3,7 +3,7 @@ import { Navbar } from "@/components/Layout/Navbar/Navbar";
 import { Footer } from "@/components/Layout/Footer/Footer";
 
 export const metadata = {
-  title: "Food Recipe Blog | P2cart",
+  title: "e-Visa Portal",
 
 };
 
